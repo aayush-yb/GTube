@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>GTube</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Google + Youtube">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../static/styles/bootstrap-4.1.2/bootstrap.min.css">
+<link href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.3.4/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../static/plugins/OwlCarousel2-2.3.4/animate.css">
+<link rel="stylesheet" type="text/css" href="../static/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../static/styles/responsive.css">
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<!-- <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script> -->
+
+</head>
+<body>
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-center">
+
+						<!-- Logo -->
+						<div class="logo">
+							<a href="#" class="d-flex flex-row align-items-end justify-content-start">
+								<span class="logo_bars d-flex flex-row align-items-end justify-content-between"><span></span><span></span><span></span><span></span><span></span></span>
+								<span class="logo_text">gtube</span>
+							</a>
+						</div>
+
+						<!-- Main Navigation -->
+						<nav class="main_nav">
+							<ul class="d-flex flex-row align-items-center justify-content-start">
+								<li class="active"><a href="index.html">Home</a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu">
+		<div class="menu_container">
+			<div class="menu_background"></div>
+			<div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+			<div class="menu_content d-flex flex-column align-items-center justify-content-start">
+				<nav class="menu_nav">
+					<ul class="d-flex flex-column align-items-center justify-content-start">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="../templates/contact.html">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		
+		<!-- Home Slider -->
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Slide -->
+				<div class="slide">
+					<div class="background_image" style="background-image:url('../static/images/index.jpg')"></div>
+					<div class="home_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_content">
+										<div class="home_title_container text-center">
+											<div class="home_title islive text-center"><h1>get <span>started.</span></h1></div>
+										</div>
+
+										
+										<div class="tickets_form_container">
+											<form id="query-info" class="tickets_form">
+												<div class="d-flex flex-md-row justify-content-between">
+													<div class="tickets_form_inputs d-flex flex-row align-items-between justify-content-between">
+														<input type="text" id="query-search" class="query_form_input" placeholder="Type your query here" required="required">
+													</div>
+													<button id="submit-query-info" class="query_button button"><span>Query</span></button>
+												</div>
+											</form>
+										</div>
+										<div class="tickets_form_container">
+											<form id="user-info" class="tickets_form" >
+												<div class="d-flex flex-md-row flex-column align-items-start justify-content-md-between justify-content-start">
+													
+													<div class="tickets_form_inputs d-flex flex-row align-items-start justify-content-between">
+														<input type="text" id="search-keyword" class="tickets_form_input" placeholder="Keyword" name="keyword" required="required">
+														<input type="url" id="youtube-url" class="tickets_form_input" placeholder="Video Link" name="url" required="required">
+													</div>
+													<button id="submit-user-info" type="submit" class="query_button button"><span>Search Now</span></button>
+												</div>
+											</form>
+										</div>
+										<div class="tickets_form_container">
+											<form id="summarise-info" class="tickets_form" >
+												<div class="d-flex flex-md-row flex-column align-items-start justify-content-md-between justify-content-start">
+													<div class="tickets_form_inputs d-flex flex-row align-items-start justify-content-between">
+														<input type="url" id="summarise-link" class="query_form_input" placeholder="Video to be summarised link" name="summary" required="required">
+													</div>
+													<button id="summarise-button" type="click" class="query_button button"><span>Summarise Video</span></button>
+												</div>
+											</form>
+										</div>
+										<div class="tickets_form_container"> 
+											<input type="file" id="myFileInput" style="display:none"/>		
+											<button id="find-local" class="query_button button"
+														onclick="document.getElementById('myFileInput').click()
+														"><span>Local video</span></button>
+											<button id="find-photo" class="query_button button"
+														onclick="document.getElementById('myFileInput').click()
+														"><span>Find photo</span></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Home Slider Navigation -->
+			<div class="home_slider_nav"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+
+		</div>
+	</div>
+	<div class="container ">
+		<div class="well well-sm align-item-center ">
+	        <h2>Search Results...</h2>
+	    </div>
+	    <div class="btn btn-default search-clear align-item-center ">Clear Search</div>
+	</div>
+    <script>
+	    (function (b, o, i, l, e, r) {
+	    b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+	        function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+	        e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+	        e.src = 'https://www.google-analytics.com/analytics.js';
+	        r.parentNode.insertBefore(e, r)
+	    }(window, document, 'script', 'ga'));
+	    ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
+	</script>
+	<div class="container ">
+		<div class="embedded_video align-item-center">
+		  	<div id="youtube-video">
+	    		<iframe id="embedded-video" width="854" height="480" src="https://www.youtube.com/embed/d0NHOpeczUU?rel=0&autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
+	    	</div>
+		</div>
+		<div class="row">
+	        <pre id="results">
+
+	        </pre>
+	    </div>
+	</div>
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="background_image" style="background-image:url('../static/images/footer.jpg')"></div>
+		<div class="footer_content">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+
+						<!-- Logo -->
+						<div class="logo">
+							<a href="#" class="d-flex flex-row align-items-end justify-content-start">
+								<span class="logo_bars d-flex flex-row align-items-end justify-content-between"><span></span><span></span><span></span><span></span><span></span></span>
+								<span class="logo_text">gtube</span>
+							</a>
+						</div>
+
+						<!-- Footer Social -->
+						<div class="footer_social">
+							<ul class="d-flex flex-row align-items-center justify-content-center">
+								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="copyright text-center">
+Copyright 2019 All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Ganador</a></div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</footer>
+</div>
+
+<script src="../static/js/jquery-3.3.1.min.js"></script>
+<script src="../static/js/style.js"></script>
+<script src="../static/styles/bootstrap-4.1.2/popper.js"></script>
+<script src="../static/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+<script src="../static/plugins/greensock/TweenMax.min.js"></script>
+<script src="../static/plugins/greensock/TimelineMax.min.js"></script>
+<script src="../static/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="../static/plugins/greensock/animation.gsap.min.js"></script>
+<script src="../static/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="../static/plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
+<script src="../static/plugins/jPlayer/jquery.jplayer.min.js"></script>
+<script src="../static/plugins/jPlayer/jplayer.playlist.min.js"></script>
+<script src="../static/plugins/easing/easing.js"></script>
+<script src="../static/plugins/progressbar/progressbar.min.js"></script>
+<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="../static/plugins/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="../static/js/custom.js"></script>
+
+#myFileInput {
+    display:none;
+}
+
+</body>
+</html>
