@@ -33,6 +33,19 @@ $(document).ready(function() {
         });
     });
 
+    $("#find-local").on("change", function() {
+        console.log(this);
+        var local_file=$(this).val;
+        localVideo(local_file);
+    });
+
+    $("#find-photo").on("change", function() {
+        //alert("aaaaaaa");
+        console.log(this);
+        var local_file=$(this).val;
+        localPhoto(local_file);
+    });
+
     $("#query-info").on("submit", function() {
         event.preventDefault();
         var q=$(tebriwal).val();
@@ -178,6 +191,112 @@ $(document).ready(function() {
                     var value = $(this).attr("value");                                                  
                     var new_url = url + "?start="+ parseInt(value)+"&autoplay=1&mute=1" ;
                    $("#embedded-video").attr("src", new_url);
+                });
+            }
+        });
+    }
+
+    function localVideo(local_file) {
+        //alert(local_file);
+        // $.ajax({
+        //     url: "/video_to_text.py",
+        //     success: function(response) {
+        //         console.log("done");
+        //     },
+        //     error: function(request, status, error) {
+        //         console.log("Error: " + error);
+        //     }
+        // });
+        $("#embedded-video").attr("src", "../static/images/videoplayback.mp4");
+        var url = $("#embedded-video").attr("src");
+        var results = $("#results");
+        var keyword = "census";
+        $.ajax({
+            url: "/search_keyword_locally",
+            type: "POST",
+            data: {
+                "url": url,
+                "keyword": keyword
+            },
+            success: function(data){                          
+                var data_size = Object.keys(data).length;                
+
+                var output = "";
+                
+                $.each(data, function(index, value){   
+                    var key = Object.keys(value)[0];                                     
+                    output += "<button type='button' class='btn btn-danger timestamp' value='" + value[key] + "'>" + '<i class="fa fa-play" aria-hidden="true"></i>&nbsp' +  '<span style="color:black;">' + key + "</span>" + "</button>&nbsp";
+                    console.log(value[key]);
+                    console.log(key);
+                    if((parseInt(index) + 1) % 5 == 0){
+                        output += "<br>";
+                    }
+                });
+
+                results.html(output);
+                var url1 = "../static/images/videoplayback1.mp4";
+                $(".timestamp").click(function(){      
+                    var temp = url;
+                    url = url1;
+                    url1 = temp;
+                    var value = $(this).attr("value");                                                  
+                    var new_url =  url + "#t="+ parseInt(value);
+                    console.log(new_url);
+                    $("#embedded-video").attr("src", new_url);
+                    //$("#embedded-video").attr("src", "../static/images/video.mp4#t=10");
+                });
+            }
+        });
+    }
+
+    function localPhoto(local_file) {
+        //alert(local_file);
+        // $.ajax({
+        //     url: "/video_to_text.py",
+        //     success: function(response) {
+        //         console.log("done");
+        //     },
+        //     error: function(request, status, error) {
+        //         console.log("Error: " + error);
+        //     }
+        // });
+        $("#embedded-video").attr("src", "../static/images/video2.mp4");
+        var url = $("#embedded-video").attr("src");
+        var results = $("#results");
+        var keyword = "person";
+        $.ajax({
+            url: "/search_photo_locally",
+            type: "POST",
+            data: {
+                "url": url,
+                "keyword": keyword
+            },
+            success: function(data){                          
+                var data_size = Object.keys(data).length;                
+
+                var output = "";
+                
+                $.each(data, function(index, value){   
+                    var key = Object.keys(value)[0];                                     
+                    output += "<button type='button' class='btn btn-danger timestamp' value='" + value[key] + "'>" + '<i class="fa fa-play" aria-hidden="true"></i>&nbsp' +  '<span style="color:black;">' + key + "</span>" + "</button>&nbsp";
+                    console.log(value[key]);
+                    console.log(key);
+                    if((parseInt(index) + 1) % 5 == 0){
+                        output += "<br>";
+                    }
+                });
+
+                results.html(output);
+                var url1 = "../static/images/video1.mp4";
+                $(".timestamp").click(function(){      
+                    var temp = url;
+                    url = url1;
+                    url1 = temp;
+                    var value = $(this).attr("value");                                                  
+                    var new_url =  url + "#t="+ parseInt(value);
+                    console.log(new_url);
+                    $("#embedded-video").attr("src", new_url);
+                    //$("#embedded-video").attr("src", "../static/images/video.mp4#t=10");
                 });
             }
         });

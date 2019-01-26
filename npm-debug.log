@@ -1,0 +1,62 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'phantomjs-prebuilt' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData phantomjs-prebuilt
+8 silly fetchNamedPackageData phantomjs-prebuilt
+9 silly mapToRegistry name phantomjs-prebuilt
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/phantomjs-prebuilt
+13 verbose request uri https://registry.npmjs.org/phantomjs-prebuilt
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 12:17:38 PM
+16 verbose request id fbc5ea536c9294ff
+17 http request GET https://registry.npmjs.org/phantomjs-prebuilt
+18 info retry will retry, error on last attempt: Error: connect ETIMEDOUT 104.16.21.35:443
+19 info attempt registry request try #2 at 12:19:58 PM
+20 http request GET https://registry.npmjs.org/phantomjs-prebuilt
+21 info retry will retry, error on last attempt: Error: connect EHOSTUNREACH 104.16.17.35:443
+22 info attempt registry request try #3 at 12:21:14 PM
+23 http request GET https://registry.npmjs.org/phantomjs-prebuilt
+24 silly fetchPackageMetaData Error: connect EHOSTUNREACH 104.16.22.35:443
+24 silly fetchPackageMetaData     at Object._errnoException (util.js:1022:11)
+24 silly fetchPackageMetaData     at _exceptionWithHostPort (util.js:1044:20)
+24 silly fetchPackageMetaData     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+24 silly fetchPackageMetaData  error for phantomjs-prebuilt { Error: connect EHOSTUNREACH 104.16.22.35:443
+24 silly fetchPackageMetaData     at Object._errnoException (util.js:1022:11)
+24 silly fetchPackageMetaData     at _exceptionWithHostPort (util.js:1044:20)
+24 silly fetchPackageMetaData     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+24 silly fetchPackageMetaData   code: 'EHOSTUNREACH',
+24 silly fetchPackageMetaData   errno: 'EHOSTUNREACH',
+24 silly fetchPackageMetaData   syscall: 'connect',
+24 silly fetchPackageMetaData   address: '104.16.22.35',
+24 silly fetchPackageMetaData   port: 443 }
+25 silly rollbackFailedOptional Starting
+26 silly rollbackFailedOptional Finishing
+27 silly runTopLevelLifecycles Starting
+28 silly runTopLevelLifecycles Finishing
+29 silly install printInstalled
+30 verbose stack Error: connect EHOSTUNREACH 104.16.22.35:443
+30 verbose stack     at Object._errnoException (util.js:1022:11)
+30 verbose stack     at _exceptionWithHostPort (util.js:1044:20)
+30 verbose stack     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+31 verbose cwd /home/ayushghd/Documents/imp/GTube
+32 error Linux 4.15.0-43-generic
+33 error argv "/usr/bin/node" "/usr/bin/npm" "install" "-g" "phantomjs-prebuilt"
+34 error node v8.10.0
+35 error npm  v3.5.2
+36 error code EHOSTUNREACH
+37 error errno EHOSTUNREACH
+38 error syscall connect
+39 error connect EHOSTUNREACH 104.16.22.35:443
+40 error If you need help, you may report this error at:
+40 error     <https://github.com/npm/npm/issues>
+41 verbose exit [ 1, true ]

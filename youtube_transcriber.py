@@ -1,9 +1,6 @@
-#made by Team Ganador
-
 import requests
 from urllib.parse import urlparse, parse_qs
 from xml.etree import ElementTree
-from youtube_ghost import get_transcribe_url
 from requests.auth import HTTPProxyAuth
 
 proxies = {"http":"172.31.100.14:3128"}
@@ -11,7 +8,6 @@ auth = HTTPProxyAuth("edcguest", "edcguest")
 OK = 200
 
 def get_video_id(url):
-    """ Get YouTube video ID from YouTube URL """
 
     if not url:
         return ""
@@ -25,7 +21,6 @@ def get_video_id(url):
 
 
 def transcribe_video(youtube_url, ghost=True):
-    """ Transcribe YouTube video. """
     id = get_video_id(youtube_url)
     url = "http://video.google.com/timedtext?lang=en&v={}".format(id)
     print(url)
@@ -34,8 +29,7 @@ def transcribe_video(youtube_url, ghost=True):
 
 
 def search_keywords(youtube_url, keyword):
-    """ Search for keyword in a YouTube video."""
-   # print("hihihihi")
+    print("hihihihi")
     timestamps = list()
     if not keyword or not youtube_url:
         return timestamps

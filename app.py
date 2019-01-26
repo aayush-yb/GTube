@@ -3,6 +3,8 @@ import json
 
 from flask import Flask, redirect, request, render_template, jsonify
 from youtube_transcriber import search_keywords
+from video_to_text import convert_to_text
+from detection import convert_to_photo
 
 import argparse
 import os
@@ -15,6 +17,12 @@ import imageio
 import youtube_dl
 import chardet
 import nltk
+proxy = 'http://edcguest:edcguest@172.31.102.14:3128'
+
+os.environ['http_proxy'] = proxy 
+os.environ['HTTP_PROXY'] = proxy
+os.environ['https_proxy'] = proxy
+os.environ['HTTPS_PROXY'] = proxy
 imageio.plugins.ffmpeg.download()
 nltk.download('punkt')
 
@@ -27,7 +35,6 @@ from sumy.summarizers.lsa import LsaSummarizer
 
 
 imageio.plugins.ffmpeg.download()
-
 
 app = Flask(__name__)
 
@@ -59,6 +66,25 @@ def searchKeyWord():
         return jsonify(dict())
     return jsonify(timeStamp(result))
 
+@app.route('/search_keyword_locally', methods=['POST'])
+def searchKeyWordLocally():
+    url = request.form["url"]
+    keyword = request.form["keyword"]
+    result = convert_to_text(url, keyword)
+    if not result:
+        return jsonify(dict())
+
+    return jsonify(timeStamp(result))
+
+@app.route('/search_photo_locally', methods=['POST'])
+def searchPhotoLocally():
+    url = request.form["url"]
+    keyword = request.form["keyword"]
+    result = convert_to_photo(url, keyword)
+    if not result:
+        return jsonify(dict())
+
+    return jsonify(timeStamp(result))
 
 def timeStamp(list_time):
 
@@ -157,7 +183,7 @@ def get_summary(filename="1.mp4", subtitles="1.srt"):
     regions = find_summary_regions(subtitles, clip.duration/10, "english")
     summary = create_summary(filename, regions)
     base, ext = os.path.splitext(filename)
-    output = "/home/ayushghd/Documents/imp/GTube/static/images/{0}_1.mp4".format(base)
+    output = "/home/priyanshu/Desktop/GTube/static/images/{0}_1.mp4".format(base)
     summary.to_videofile(
                 output,
                 codec="libx264",
