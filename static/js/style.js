@@ -3,7 +3,7 @@ $(document).ready(function() {
     var ram=$('#search-keyword');
     var omshubham=$('#youtube-url');
     var tebriwal=$('#query-search');
-    var ayush=$('#file');
+    var maa_ka_bharosa=$('#summarise-link');
     $("#user-info").on("submit", function() {
         event.preventDefault();  
         var url1= $(ram).val();
@@ -13,18 +13,32 @@ $(document).ready(function() {
         searchKeyword("hi", "hi", url1, url2);        
     });
 
+    $('#summarise-info').on("submit", function() {
+        event.preventDefault();
+        var url=$(maa_ka_bharosa).val();
+        console.log(url);
+        // var video = "../static/images/1_1.mp4";
+        // $("#embedded-video").attr("src", video);
+        $.ajax({
+            url: "/sum",
+            type: "POST",
+            data: {
+                "url2": url,
+            },
+            success: function(response) {
+                console.log("done");
+                var video = "../static/images/1_1.mp4";
+                $("#embedded-video").attr("src", video);
+            }
+        });
+    });
+
     $("#query-info").on("submit", function() {
+        event.preventDefault();
         var q=$(tebriwal).val();
         executeQuery(q);
     });
-    // $("#find-local").change( function(event) {
-    //     alert("aaaa");
-    // });
-    $("#find-local").on("change", function() {
-        console.log(this);
-        var local_file=$(this).val;
-        localVideo(local_file);
-    });
+
     function onClientLoad() {
         gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
     }
@@ -109,53 +123,7 @@ $(document).ready(function() {
             document.getElementById("query-search").innerHTML = "Error!! Type properly";
         }
     }
-    function localVideo(local_file) {
-        //alert(local_file);
-        // $.ajax({
-        //     url: "/video_to_text.py",
-        //     success: function(response) {
-        //         console.log("done");
-        //     },
-        //     error: function(request, status, error) {
-        //         console.log("Error: " + error);
-        //     }
-        // });
-        $("#embedded-video").attr("src", "../static/images/videoplayback.mp4");
-        var url = $("#embedded-video").attr("src");
-        var results = $("#results");
-        var keyword = "shreyas";
-        $.ajax({
-            url: "/search_keyword_locally",
-            type: "POST",
-            data: {
-                "url": url,
-                "keyword": keyword
-            },
-            success: function(data){                          
-                var data_size = Object.keys(data).length;                
 
-                var output = "";
-                
-                $.each(data, function(index, value){   
-                    var key = Object.keys(value)[0];                                     
-                    output += "<button type='button' class='btn btn-danger timestamp' value='" + value[key] + "'>" + '<i class="fa fa-play" aria-hidden="true"></i>&nbsp' +  '<span style="color:black;">' + key + "</span>" + "</button>&nbsp";
-                    console.log(value[key]);
-                    console.log(key);
-                    if((parseInt(index) + 1) % 5 == 0){
-                        output += "<br>";
-                    }
-                });
-
-                results.html(output);
-                $(".timestamp").click(function(){      
-                    var value = $(this).attr("value");                                                  
-                    var new_url = url + "#t="+ parseInt(value);
-                    console.log(new_url);
-                   $("#embedded-video").attr("src", new_url);
-                });
-            }
-        });
-    }
     function searchVideo(keyword1, url1, key, ur) {
         var url;
         if(url1.localeCompare("hi") == 0)
@@ -199,8 +167,7 @@ $(document).ready(function() {
                 $.each(data, function(index, value){   
                     var key = Object.keys(value)[0];                                     
                     output += "<button type='button' class='btn btn-danger timestamp' value='" + value[key] + "'>" + '<i class="fa fa-play" aria-hidden="true"></i>&nbsp' +  '<span style="color:black;">' + key + "</span>" + "</button>&nbsp";
-                    console.log(value[key]);
-                    console.log(key);
+                    
                     if((parseInt(index) + 1) % 5 == 0){
                         output += "<br>";
                     }
