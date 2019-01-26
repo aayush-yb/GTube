@@ -35,15 +35,17 @@ $(document).ready(function() {
 
     $("#find-local").on("change", function() {
         console.log(this);
+        var keyword= $(ram).val();
         var local_file=$(this).val;
-        localVideo(local_file);
+        localVideo(keyword);
     });
 
     $("#find-photo").on("change", function() {
         //alert("aaaaaaa");
         console.log(this);
+        var keyword= $(ram).val();
         var local_file=$(this).val;
-        localPhoto(local_file);
+        localPhoto(keyword);
     });
 
     $("#query-info").on("submit", function() {
@@ -196,7 +198,7 @@ $(document).ready(function() {
         });
     }
 
-    function localVideo(local_file) {
+    function localVideo(keyword) {
         //alert(local_file);
         // $.ajax({
         //     url: "/video_to_text.py",
@@ -210,7 +212,7 @@ $(document).ready(function() {
         $("#embedded-video").attr("src", "../static/images/videoplayback.mp4");
         var url = $("#embedded-video").attr("src");
         var results = $("#results");
-        var keyword = "census";
+        //var keyword = "census";
         $.ajax({
             url: "/search_keyword_locally",
             type: "POST",
@@ -249,7 +251,7 @@ $(document).ready(function() {
         });
     }
 
-    function localPhoto(local_file) {
+    function localPhoto(keyword) {
         //alert(local_file);
         // $.ajax({
         //     url: "/video_to_text.py",
@@ -260,10 +262,15 @@ $(document).ready(function() {
         //         console.log("Error: " + error);
         //     }
         // });
-        $("#embedded-video").attr("src", "../static/images/video2.mp4");
+        if(keyword[0] == 's')
+            $("#embedded-video").attr("src", "../static/images/video2.mp4");
+        if(keyword[0] == 't')
+            $("#embedded-video").attr("src", "../static/images/video_text.mp4");
+        if(keyword[0] == 'f')
+            $("#embedded-video").attr("src", "../static/images/videofast.mp4");
         var url = $("#embedded-video").attr("src");
         var results = $("#results");
-        var keyword = "person";
+        // var keyword = "person";
         $.ajax({
             url: "/search_photo_locally",
             type: "POST",
@@ -287,7 +294,13 @@ $(document).ready(function() {
                 });
 
                 results.html(output);
-                var url1 = "../static/images/video1.mp4";
+                var url1 ;
+                if(keyword[0] == 's')
+                    url1 = "../static/images/video1.mp4";
+                if(keyword[0] == 't')
+                    url1 = "../static/images/video_text1.mp4";
+                if(keyword[0] == 'f')
+                    url1 = "../static/images/videofast1.mp4";
                 $(".timestamp").click(function(){      
                     var temp = url;
                     url = url1;

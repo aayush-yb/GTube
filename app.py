@@ -5,6 +5,8 @@ from flask import Flask, redirect, request, render_template, jsonify
 from youtube_transcriber import search_keywords
 from video_to_text import convert_to_text
 from detection import convert_to_photo
+from text_detection import convert_to_photo_text
+from detection_fast import convert_to_photo_fast
 
 import argparse
 import os
@@ -80,7 +82,15 @@ def searchKeyWordLocally():
 def searchPhotoLocally():
     url = request.form["url"]
     keyword = request.form["keyword"]
-    result = convert_to_photo(url, keyword)
+    method = keyword.split(' ')[0]
+    keyWord = keyword.split(' ')[1]
+    result = []
+    if method == "fast":
+        result = convert_to_photo_fast(url, keyWord)
+    if method == "text":
+        result = convert_to_photo_text(url, keyWord)
+    if method == "slow":
+        result = convert_to_photo(url, keyWord)
     if not result:
         return jsonify(dict())
 

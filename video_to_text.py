@@ -12,8 +12,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DRIVER_NAME = "chromedriver.exe" if platform == "win32" else "chromedriver"
 DRIVER_DIR = os.path.join(BASE_DIR, "static/plugins", DRIVER_NAME)
 converter = "https://www.360converter.com/conversion/video2TextConversion?type=v2t"
-duration = '00:05:10'
-start = '00:04:40'
+duration = '00:00:30'
+
 def wait_for_page_load(driver, timeout=30):
         old_page = driver.find_element_by_tag_name('html')
         yield
@@ -34,10 +34,6 @@ def convert_to_text(filePath, keyword):
     
     option =  driver.find_element_by_xpath("//select[@name='language']/option[@value='en-US']").click()  
     
-    timer = driver.find_element_by_id('from')
-    timer.clear()
-    timer.send_keys(start)
-
     timer = driver.find_element_by_id('to')
     timer.clear()
     timer.send_keys(duration)

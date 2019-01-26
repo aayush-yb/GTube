@@ -26,6 +26,7 @@ def convert_to_photo(filepath, keyword):
       print ('Read a new frame: ', success)
       count += 1
     clipDuration /= count;
+    print(keyword)
     frameTime = []
     finalTime = []
     for i in range (count):
