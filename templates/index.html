@@ -121,13 +121,12 @@
 											</form>
 										</div>
 										<div class="tickets_form_container"> 
-											<input type="file" id="myFileInput" style="display:none"/>		
-											<button id="find-local" class="query_button button"
-														onclick="document.getElementById('myFileInput').click()
-														"><span>Local video</span></button>
-											<button id="find-photo" class="query_button button"
-														onclick="document.getElementById('myFileInput').click()
-														"><span>Find photo</span></button>
+											<label class="query_button button">
+													<span>Local Video</span> <input type="file" id="find-local" style="display: none;" accept="video/*">
+											</label>
+											<label class="query_button button">
+													<span>Find Video</span> <input type="file" id="find-photo" style="display: none;" >
+											</label>
 										</div>
 									</div>
 								</div>
