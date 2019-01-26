@@ -1,7 +1,7 @@
 import requests
 from urllib.parse import urlparse, parse_qs
 from xml.etree import ElementTree
-from youtube_ghost import get_transcribe_url
+
 from requests.auth import HTTPProxyAuth
 
 proxies = {"http":"172.31.100.14:3128"}
