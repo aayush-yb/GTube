@@ -28,7 +28,6 @@ from sumy.summarizers.lsa import LsaSummarizer
 
 imageio.plugins.ffmpeg.download()
 
-
 app = Flask(__name__)
 
 
@@ -57,6 +56,16 @@ def searchKeyWord():
     result = search_keywords(url, keyword)
     if not result:
         return jsonify(dict())
+    return jsonify(timeStamp(result))
+
+@app.route('/search_keyword_locally', methods=['POST'])
+def searchKeyWordLocally():
+    url = request.form["url"]
+    keyword = request.form["keyword"]
+    result = convert_to_text(url, keyword)
+    if not result:
+        return jsonify(dict())
+
     return jsonify(timeStamp(result))
 
 
