@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from __future__ import unicode_literals
 import json
 
@@ -30,14 +29,6 @@ from sumy.summarizers.lsa import LsaSummarizer
 imageio.plugins.ffmpeg.download()
 
 
-=======
-#made by Team Ganador
-
-import json
-from flask import Flask, redirect, request, render_template, jsonify
-from youtube_transcriber import search_keywords
-from sum.py import fun
->>>>>>> a728c60df638dcb7547cae27933335e88beecbfe
 app = Flask(__name__)
 
 
@@ -53,7 +44,6 @@ def index():
 def contact():
     return render_template('contact.html')
 
-<<<<<<< HEAD
 @app.route('/sum', methods=['POST'])
 def summariser():
     url = request.form["url2"];
@@ -67,32 +57,11 @@ def searchKeyWord():
     result = search_keywords(url, keyword)
     if not result:
         return jsonify(dict())
-=======
-@app.route('/sum.py')
-def summariser():
-    fun()
-    yield('hi')
-
-@app.route('/search_keyword', methods=['POST'])
-def searchKeyWord():
-
-    url = request.form["url"]
-    keyword = request.form["keyword"]
-    result = search_keywords(url, keyword)
-
-    if not result:
-        return jsonify(dict())
-
->>>>>>> a728c60df638dcb7547cae27933335e88beecbfe
     return jsonify(timeStamp(result))
 
 
 def timeStamp(list_time):
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> a728c60df638dcb7547cae27933335e88beecbfe
     format_time = dict()
     i = 0
     for time in list_time:
@@ -103,7 +72,6 @@ def timeStamp(list_time):
     return format_time
 
 
-<<<<<<< HEAD
 def summarize(srt_file, n_sentences, language="english"):
     parser = PlaintextParser.from_string(
         srt_to_txt(srt_file), Tokenizer(language))
@@ -231,7 +199,5 @@ def fun(url):
     os.remove(subtitle_filename)
     print("[sum.py] Remove the original files")
 
-=======
->>>>>>> a728c60df638dcb7547cae27933335e88beecbfe
 if __name__ == '__main__':
     app.run()
