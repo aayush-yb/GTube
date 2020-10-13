@@ -62,9 +62,7 @@ def convert_to_photo_fast(filepath, keyword):
                     confidence * 100)
                 print(label)
                 if CLASSES[idx] == keyword:
-                    # print("hi")
                     lst.append(ii)
-                # print(ii, label, confidence)
     print(lst)
     lst2=[]
     flag=1
