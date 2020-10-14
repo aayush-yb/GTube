@@ -13,6 +13,8 @@ from moviepy.editor import VideoFileClip
 def convert_to_photo_fast(filepath, keyword):
     print(keyword)
     filepath = './static/images/videofast.mp4'
+    TXT_FILE = "MobileNetSSD_deploy.prototxt.txt"
+    MODEL_NAME = "MobileNetSSD_deploy.caffemodel"
     vidcap = cv2.VideoCapture(filepath)
     success,image = vidcap.read()
     count = 0
@@ -34,7 +36,7 @@ def convert_to_photo_fast(filepath, keyword):
         "sofa", "train", "tvmonitor"]
     COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
-    net = cv2.dnn.readNetFromCaffe("MobileNetSSD_deploy.prototxt.txt", "MobileNetSSD_deploy.caffemodel")
+    net = cv2.dnn.readNetFromCaffe(TXT_FILE, MODEL_NAME)
     time.sleep(2.0)
     
     lst = []
